@@ -3,8 +3,15 @@ import http from 'http';
 import express, { Express } from 'express';
 import morgan from 'morgan';
 import routes from './routes/posts';
+import favicon from "serve-favicon";
 
 const router: Express = express();
+
+/* favicon */
+router.use(favicon(__dirname + '/public/img/favicon.ico')); /* ADD favicon to structure */
+console.log(__dirname)
+
+
 
 /** Logging */
 router.use(morgan('dev'));
@@ -12,7 +19,6 @@ router.use(morgan('dev'));
 router.use(express.urlencoded({ extended: false }));
 /** Takes care of JSON data */
 router.use(express.json());
-
 /** RULES OF OUR API */
 router.use((req, res, next) => {
     // set the CORS policy
@@ -40,5 +46,5 @@ router.use((req, res, next) => {
 
 /** Server */
 const httpServer = http.createServer(router);
-const PORT: any = process.env.PORT ?? 6060;
+const PORT: any = process.env.PORT ?? 5000;
 httpServer.listen(PORT, () => console.log(`The server is running on port ${PORT}`));

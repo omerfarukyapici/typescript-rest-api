@@ -42,6 +42,7 @@ const getPosts = async (req: Request, res: Response, next: NextFunction) => {
 
 
 
+
 /* // getting a single post
 const getPost = async (req: Request, res: Response, next: NextFunction) => {
     // get the post id from the req
